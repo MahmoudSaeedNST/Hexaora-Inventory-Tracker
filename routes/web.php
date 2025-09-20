@@ -22,4 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
 });
 
+Route::get('/notifications', function () {
+    $notifications = auth()->user()->notifications()->latest()->paginate(10);
+    return view('notifications.notifications', ['notifications' => $notifications]);
+})->name('notifications')->middleware('auth');
+
+
 require __DIR__.'/auth.php';

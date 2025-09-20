@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Notifications\LowStockNotification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ProductController extends Controller
 {
@@ -59,7 +61,8 @@ class ProductController extends Controller
             $product = Product::create($validated);
             if ($product->isLowStock()) {
                 // notify admin about low stock 
-                Notification::route('database', '')->notify(new LowStockNotification($product));
+                auth()->user()->notify(new LowStockNotification($product));
+
             }
             return redirect()->route('products.index')->with('success', 'Product created successfully.');
         } catch (\Exception $e) {
@@ -102,7 +105,8 @@ class ProductController extends Controller
 
             if ($product->isLowStock()) {
                 // notify admin about low stock 
-                Notification::route('database', '')->notify(new LowStockNotification($product));
+               auth()->user()->notify(new LowStockNotification($product));
+
             }
             return redirect()->route('products.index')->with('success', 'Product updated successfully.');
         } catch (\Exception $e) {
