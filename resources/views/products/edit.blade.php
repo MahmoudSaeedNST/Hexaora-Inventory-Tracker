@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-8 mt-6">
+    <div class="max-w-lg mx-auto py-8">
         <h1 class="text-2xl font-bold mb-6">Edit Product</h1>
 
         <form method="POST" action="{{ route('products.update', $product) }}" class="bg-white shadow rounded-lg p-6 space-y-5">
@@ -33,7 +33,7 @@
                 @error('reorder_level') <p class="text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
 
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-md  hover:bg-blue-700">Update</button>
+            <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
         </form>
     </div>
 </x-app-layout>

@@ -7,7 +7,6 @@
                    class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
                     Add Product
                 </a>
-               
                 <a href="{{ route('notifications') }}" 
                    class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
                     Notifications
@@ -15,7 +14,6 @@
             </div>
         </div>
 
-        <!-- Search + filter -->
         <form method="GET" class="flex gap-3 mb-6">
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Search by name or SKU..."
@@ -30,7 +28,6 @@
             </button>
         </form>
 
-        <!-- Table -->
         <div class="overflow-x-auto bg-white shadow rounded-lg">
             <table class="min-w-full text-sm text-left">
                 <thead class="bg-gray-100 text-gray-700 uppercase">
